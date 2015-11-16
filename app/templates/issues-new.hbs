@@ -1,0 +1,19 @@
+<div class="issue">
+    <h1>Suggest An Issue</h1>
+
+    <form {{action 'suggest' on='submit'}}>
+        <p></p>
+        <div class="field">
+            {{input value=title type="text" placeholder="Title" autofocus="true" required="true"}}
+        </div>
+        <div class="field">
+            {{input value=permalink type="text" placeholder="Permalink" required="true"}}
+        </div>
+        <div class="field">
+            {{textarea value=description placeholder="What is this issue about?" required="true"}}
+        </div>
+        <div class="actions">
+            <button type="submit" class="btn btn-medium btn-green">Suggest Issue</button>
+        </div>
+    </form>
+</div>

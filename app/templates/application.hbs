@@ -1,3 +1,41 @@
-<h2 id="title">Welcome to Ember</h2>
+<a class="show-sidebar">
+    <i class="icon-home"></i>
+</a>
 
-{{outlet}}
+<div class="sidebar">
+    <div class="item meta-item">
+        {{#link-to 'issues-new'}}
+            <i class="icon-plus"></i>
+        {{/link-to}}
+
+        {{#link-to 'application'}}
+            CA.GOV.VOTE
+            <!-- <img src="/assets/imgs/ca.png"> -->
+        {{/link-to}}
+    </div>
+
+    {{#each model as |issue|}}
+        {{#link-to 'issue' issue class="item"}}
+            {{issue.title}}
+        {{/link-to}}
+    {{/each}}
+</div>
+
+{{#simple-modal open=false id='login-modal'}}
+    <div class="stance">
+        <div class="stance-details">
+            <p>To vote or suggest an issue or stance, you must log in.</p>
+            <p>&nbsp;</p>
+            <p>
+                Through our secure partnership with Facebook, we are able to validate Canadian citizenship and identify voter fraud.
+                We hold your privacy as our #1 priority and will <em>never</em> disclose your private data.
+            </p>
+            <!-- {{#link-to '#'}}Log In with Facebook{{/link-to}} -->
+        </div>
+    </div>
+{{/simple-modal}}
+
+<div class="wrapper">
+    <div class="loading"></div>
+    {{outlet}}
+</div>

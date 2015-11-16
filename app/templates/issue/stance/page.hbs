@@ -1,0 +1,9 @@
+{{#simple-modal backType='issue' backModel=model.issue}}
+    {{#issue-stance stance=model store=store editing=false}}
+        {{#if isEditing}}
+            {{simple-editor item=model attr=page}}
+        {{else}}
+            {{{dynamic-attr model page}}}
+        {{/if}}
+    {{/issue-stance}}
+{{/simple-modal}}

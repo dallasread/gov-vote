@@ -1,0 +1,73 @@
+<form class="stance" {{action 'save' on='submit'}}>
+    {{#link-to 'issue' stance.issue class="gray-block" tagName="div"}}
+        <p>{{stance.issue.title}}</p>
+    {{/link-to}}
+
+    <div class="stance-header">
+        <div class="stance-header-row">
+            <a data-go="/issues/{{issue/id}}/stances/{{prev/id}}" class="stance-heading">
+                <i class="icon-arrow-left"></i>
+            </a>
+
+            {{#if isEditing}}
+                {{input type="text" value=stance.title placeholder="Short Stance Description"}}
+            {{else}}
+                <h1 class="stance-heading">{{stance.title}}</h1>
+            {{/if}}
+
+            <a data-go="/issues/{{issue/id}}/stances/{{next/id}}" class="stance-heading">
+                <i class="icon-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="stance-details">
+        <div class="menu">
+            {{#if isEditing}}
+                <button type="submit" class="btn btn-green btn-small">Save Changes</button>
+            {{else}}
+                {{#link-to 'issue' stance.issue.id class='btn btn-green btn-small'}}
+                    Vote On This Issue
+                {{/link-to}}
+            {{/if}}
+
+            <ul class="simple-list">
+                <li>
+                    {{#link-to 'issue.stance.page' stance.issue.id stance.id 'wiki'}}
+                        Wiki
+                    {{/link-to}}
+                </li>
+                <li>
+                    {{#link-to 'issue.stance.page' stance.issue.id stance.id 'video'}}
+                        Video
+                    {{/link-to}}
+                </li>
+                <li>
+                    {{#link-to 'issue.stance.page' stance.issue.id stance.id 'audio'}}
+                        Audio
+                    {{/link-to}}
+                </li>
+                <li>
+                    {{#link-to 'issue.stance.page' stance.issue.id stance.id 'documents'}}
+                        Documents
+                    {{/link-to}}
+                </li>
+                <li>
+                    {{#link-to 'issue.stance.page' stance.issue.id stance.id 'comments'}}
+                        Comments
+                    {{/link-to}}
+                </li>
+
+                {{#if session.isAuthenticated}}
+                    <li>
+                        <a {{action 'edit' on='click'}}>Edit</a>
+                    </li>
+                {{/if}}
+            </ul>
+        </div>
+
+        <div class="stance-content">
+            {{yield}}
+        </div>
+    </div>
+</form>

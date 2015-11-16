@@ -1,0 +1,35 @@
+{{outlet}}
+
+<div class="issue">
+    <h1>{{model.title}}</h1>
+
+    <form {{action 'vote' on='submit'}}>
+        <p>{{model.description}}</p>
+        <ul class="options">
+            {{#each model.stances as |stance|}}
+                <li>
+                    <label {{action 'check' stance on='click'}} class="{{word-if stance checkedStance 'checked' ''}}">
+                        <i class="icon-close"></i>
+                        <i class="icon-check"></i>
+                        <span>{{stance.title}}</span>
+                    </label>
+
+                    {{#link-to 'issue.stance.page' stance.issue.id stance.id 'wiki' class="learn-more"}}
+                        <!-- <i class="icon-info"></i> -->
+                        Learn More
+                    {{/link-to}}
+                </li>
+            {{/each}}
+        </ul>
+
+        <div class="actions">
+            <button class="btn btn-medium {{word-if-boolean checkedStance 'btn-green' 'btn-gray'}}">
+                Save My Vote
+            </button>
+
+            <a class="learn-more" {{action 'suggest' on='click'}}>
+                Suggest An Answer
+            </a>
+        </div>
+    </form>
+</div>

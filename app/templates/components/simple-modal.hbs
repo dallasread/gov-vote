@@ -1,0 +1,11 @@
+{{#if open}}
+    {{#if backType}}
+        {{#link-to backType backModel class="modal-overlay" tagName="div"}}{{/link-to}}
+    {{else}}
+        <div class="modal-overlay" {{action 'close' on='click'}}></div>
+    {{/if}}
+
+    <div class="modal-wrapper">
+        {{yield}}
+    </div>
+{{/if}}
