@@ -5,7 +5,7 @@
 
     <div class="stance-header">
         <div class="stance-header-row">
-            <a data-go="/issues/{{issue/id}}/stances/{{prev/id}}" class="stance-heading">
+            <a {{action 'changeStance' -1 on='click'}} class="stance-heading">
                 <i class="icon-arrow-left"></i>
             </a>
 
@@ -15,7 +15,7 @@
                 <h1 class="stance-heading">{{stance.title}}</h1>
             {{/if}}
 
-            <a data-go="/issues/{{issue/id}}/stances/{{next/id}}" class="stance-heading">
+            <a {{action 'changeStance' 1 on='click'}} class="stance-heading">
                 <i class="icon-arrow-right"></i>
             </a>
         </div>

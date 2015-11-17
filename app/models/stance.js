@@ -22,7 +22,7 @@ Stance.reopenClass({
             title: 'Yes.',
             audio: 'Audio.',
             video: '<iframe width="560" height="315" src="https://www.youtube.com/embed/0V5ckcTSYu8" frameborder="0" allowfullscreen></iframe>',
-            documents: 'Documents.',
+            documents: 'Documents for yes.',
             comments: 'Comments.',
             issue: 'niqab',
             wiki: '<p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p>'
@@ -33,7 +33,7 @@ Stance.reopenClass({
             title: 'No.',
             audio: 'Audio.',
             video: '<iframe width="560" height="315" src="https://www.youtube.com/embed/0V5ckcTSYu8" frameborder="0" allowfullscreen></iframe>',
-            documents: 'Documents.',
+            documents: 'Documents again for no.',
             comments: 'Comments.',
             issue: 'niqab',
             wiki: '<p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p>'
@@ -44,7 +44,7 @@ Stance.reopenClass({
             title: 'As long as sufficient mental help is provided.',
             audio: 'Audio.',
             video: '<iframe width="560" height="315" src="https://www.youtube.com/embed/0V5ckcTSYu8" frameborder="0" allowfullscreen></iframe>',
-            documents: 'Documents.',
+            documents: 'Documents for other.',
             comments: 'Comments.',
             issue: 'niqab',
             wiki: '<p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p>'

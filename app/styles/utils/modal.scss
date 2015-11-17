@@ -15,6 +15,7 @@
     right: 0;
     bottom: 0;
     left: $spacing;
+    z-index: 999999;
     background: #fff;
     border: 1px solid #eee;
     overflow: auto;
@@ -24,4 +25,13 @@
 
 .login-modal {
     display: none;
+}
+
+@media (max-width: 788px) {
+    .modal-wrapper {
+        top: 0;
+        left: 0;
+        width: auto;
+        height: auto;
+    }
 }

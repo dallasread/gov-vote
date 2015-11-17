@@ -1,8 +1,8 @@
-<a class="show-sidebar">
+<a {{action 'toggleSidebar' on='click'}}>
     <i class="icon-home"></i>
 </a>
 
-<div class="sidebar">
+<div class="sidebar {{word-if-boolean isSidebarVisible 'is-visible' ''}}" {{action 'toggleSidebar' on='click'}}>
     <div class="item meta-item">
         {{#link-to 'issues-new'}}
             <i class="icon-plus"></i>

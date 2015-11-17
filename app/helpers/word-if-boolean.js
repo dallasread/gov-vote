@@ -4,4 +4,4 @@ export function wordUnlessBoolean(a, b, c) {
     return a ? b : c;
 }
 
-export default Ember.Helper.helper(wordUnlessBoolean);
+export default Ember.Handlebars.makeBoundHelper(wordUnlessBoolean);

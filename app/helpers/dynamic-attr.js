@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
-export function dynamicAttr(args) {
-    return args[0].get(args[1]);
+export function dynamicAttr(obj, attr) {
+    return obj.get(attr);
 }
 
-export default Ember.Helper.helper(dynamicAttr);
+export default Ember.Handlebars.makeBoundHelper(dynamicAttr);

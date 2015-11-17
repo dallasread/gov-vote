@@ -1,6 +1,6 @@
 body {
     font-family: Arial, Sans Serif;
-    font-size: 17px;
+    font-size: 19px;
     line-height: 1.4;
 }
 
@@ -54,7 +54,7 @@ p {
 }
 
 .wrapper {
-    margin-left: 350px;
+    margin-left: 380px;
 }
 
 .loading {
@@ -62,7 +62,7 @@ p {
     top: 0;
     right: 0;
     bottom: 0;
-    left: 350px;
+    left: 380px;
     background: #fff;
     display: none !important;
 }
@@ -75,13 +75,13 @@ p {
     background: #fff;
     color: #777;
     border-right: 1px solid #ddd;
-    width: 350px;
+    width: 380px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 
     .icon-plus {
         float: right;
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .item {
@@ -92,7 +92,7 @@ p {
         &.meta-item {
             color: #fff;
             color: rgba(255, 255, 255, 0.7);
-            font-size: 13px;
+            font-size: 15px;
             background: #E90606;
             border-bottom: 0;
 
@@ -118,6 +118,15 @@ p {
     .sidebar {
         left: -100%;
         width: 100%;
+        z-index: 999;
+
+        &.is-visible {
+            left: 0;
+        }
+
+        .icon-plus {
+            margin-right: 40px;
+        }
     }
 
     .wrapper {
@@ -127,4 +136,8 @@ p {
     .icon-home {
         display: block;
     }
+}
+
+a[data-ember-action] {
+    cursor: pointer;
 }

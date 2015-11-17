@@ -12,6 +12,33 @@ export default Ember.Component.extend({
         }
     }.on('init'),
     actions: {
+        changeStance: function changeStance(delta) {
+            var _ = this,
+                id = this.get('stance.id');
+
+            this.get('stance.issue.stances').then(function(sts) {
+                var stances = sts.get('currentState').filter(function(s) {
+                        return s.id !== 'suggest';
+                    }).map(function(s) {
+                        return s.id;
+                    }),
+                    index = stances.indexOf(id),
+                    newIndex = index + delta;
+
+                if (newIndex < 0) {
+                    newIndex = stances.length - 1;
+                } else if (newIndex >= stances.length) {
+                    newIndex = 0;
+                }
+
+                _.get('targetObject').transitionToRoute(
+                    'issue.stance.page',
+                    _.get('stance.issue'),
+                    stances[newIndex],
+                    _.get('targetObject.page')
+                );
+            });
+        },
         save: function save() {
             if (this.get('stance.id') === 'suggest') {
                 var data = this.get('stance').toJSON();
