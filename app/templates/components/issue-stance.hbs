@@ -33,8 +33,8 @@
 
             <ul class="simple-list">
                 <li>
-                    {{#link-to 'issue.stance.page' stance.issue.id stance.id 'wiki'}}
-                        Wiki
+                    {{#link-to 'issue.stance.page' stance.issue.id stance.id 'overview'}}
+                        Overview
                     {{/link-to}}
                 </li>
                 <li>
@@ -60,7 +60,13 @@
 
                 {{#if session.isAuthenticated}}
                     <li>
-                        <a {{action 'edit' on='click'}}>Edit</a>
+                        <a {{action 'edit' on='click'}}>
+                            {{#if isEditing}}
+                                Preview
+                            {{else}}
+                                Make Changes
+                            {{/if}}
+                        </a>
                     </li>
                 {{/if}}
             </ul>

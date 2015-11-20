@@ -29,8 +29,10 @@
 
 @media (max-width: 788px) {
     .modal-wrapper {
-        top: 0;
-        left: 0;
+        top: 10px;
+        right: 10px;
+        bottom: 10px;
+        left: 10px;
         width: auto;
         height: auto;
     }

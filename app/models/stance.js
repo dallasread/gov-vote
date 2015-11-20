@@ -3,7 +3,7 @@ import DS from 'ember-data';
 var Stance = DS.Model.extend({
     title: DS.attr('string'),
 
-    wiki: DS.attr('string'),
+    overview: DS.attr('string'),
     audio: DS.attr('string'),
     video: DS.attr('string'),
     documents: DS.attr('string'),
@@ -25,7 +25,7 @@ Stance.reopenClass({
             documents: 'Documents for yes.',
             comments: 'Comments.',
             issue: 'niqab',
-            wiki: '<p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p>'
+            overview: '<p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p>'
         },
         {
             id: 2,
@@ -36,7 +36,7 @@ Stance.reopenClass({
             documents: 'Documents again for no.',
             comments: 'Comments.',
             issue: 'niqab',
-            wiki: '<p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p>'
+            overview: '<p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p>'
         },
         {
             id: 3,
@@ -47,7 +47,7 @@ Stance.reopenClass({
             documents: 'Documents for other.',
             comments: 'Comments.',
             issue: 'niqab',
-            wiki: '<p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p>'
+            overview: '<p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p><p>This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content. This is the content.</p>'
          }
     ]
 });

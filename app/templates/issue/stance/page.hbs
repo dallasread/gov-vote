@@ -1,5 +1,5 @@
 {{#simple-modal backType='issue' backModel=model.issue}}
-    {{#issue-stance stance=model store=store editing=false}}
+    {{#issue-stance stance=model store=store editing=false session=session}}
         {{#if isEditing}}
             {{simple-editor item=model attr=page}}
         {{else}}
