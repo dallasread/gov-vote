@@ -2,14 +2,28 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
     session: Ember.inject.service('session'),
-    needs: ['application'],
     checkedStance: null,
     actions: {
         check(stance) {
             this.set('checkedStance', stance);
         },
         save() {
-            alert('save!');
+            var _ = this,
+                data = {
+                    issue: this.get('checkedStance.issue'),
+                    stance: this.get('checkedStance'),
+                    user: this.get('session.user.id')
+                };
+
+            _.store.filter('vote', function(item) {
+                if (item.get('issue') === data.issue) {
+                    item.deleteRecord();
+                }
+            }).then(function() {
+                _.store.createRecord('vote', data).save();
+            });
+
+            alert('Saved!');
         },
         vote() {
             var _ = this,

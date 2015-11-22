@@ -42,13 +42,15 @@ export default Ember.Component.extend({
         save: function save() {
             if (this.get('stance.id') === 'suggest') {
                 var data = this.get('stance').toJSON();
-                data.id = Date.now();
+                data.issue = this.get('stance.issue');
                 var stance = this.store.createRecord('stance', data);
-                stance.set('issue', this.get('stance.issue'));
+                stance.save();
                 this.get('targetObject').transitionToRoute('issue', stance.get('issue'));
             } else {
-                alert('update');
+                this.get('stance').save();
+                this.set('isEditing', false);
             }
+
         },
         edit: function edit() {
             this.set('isEditing', !this.get('isEditing'));

@@ -1,0 +1,866 @@
+{
+    "paths": {
+        "/sessions/auth": {
+            "options": {
+                "x-amazon-apigateway-integration": {
+                    "type": "MOCK",
+                    "requestTemplates": {
+                        "application/json": {
+                            "statusCode": 200
+                        }
+                    },
+                    "requestParameters": {
+                        "method.request.header.Authorization": true
+                    },
+                    "requestModels": {
+                        "application/json": "Empty"
+                    },
+                    "responses": {
+                        "200": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
+                                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            },
+                            "responseTemplates": {
+                                "application/json": null
+                            },
+                            "responseModels": {
+                                "application/json": "Empty"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "operationId": "GovVoteAPI-Sessions-Auth-POST",
+                "x-api-deploy": {
+                    "sdk": {
+                        "method": "sessionsAuth"
+                    }
+                },
+                "x-amazon-lambda": {
+                    "handler": "./controllers/sessions/auth.js",
+                    "memorySize": "",
+                    "role": "",
+                    "timeout": "",
+                    "runtime": ""
+                },
+                "x-amazon-apigateway-integration": {
+                    "type": "AWS",
+                    "apiKeyRequired": false,
+                    "httpMethod": "POST",
+                    "cacheNamespace": null,
+                    "cacheKeyParameters": [],
+                    "credentials": null,
+                    "requestTemplates": {},
+                    "requestParameters": {
+                        "method.request.header.Authorization": true
+                    },
+                    "requestModels": {
+                        "application/json": "Empty"
+                    },
+                    "responses": {
+                        "200": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
+                                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            },
+                            "responseTemplates": {
+                                "application/json": {
+                                    "payload": "$input.params()",
+                                    "path": "$input.params().path",
+                                    "query": "$input.params().querystring",
+                                    "header": "$input.params().header",
+                                    "Authorization": "$input.params(\"Authorization\")"
+                                }
+                            },
+                            "responseModels": {
+                                "application/json": "Empty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sessions": {
+            "options": {
+                "x-amazon-apigateway-integration": {
+                    "type": "MOCK",
+                    "requestTemplates": {
+                        "application/json": {
+                            "statusCode": 200
+                        }
+                    },
+                    "requestParameters": {
+                        "method.request.header.Authorization": true
+                    },
+                    "requestModels": {
+                        "application/json": "Empty"
+                    },
+                    "responses": {
+                        "200": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
+                                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            },
+                            "responseTemplates": {
+                                "application/json": null
+                            },
+                            "responseModels": {
+                                "application/json": "Empty"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "operationId": "GovVoteAPI-Sessions-POST",
+                "x-api-deploy": {
+                    "sdk": {
+                        "method": "sessions"
+                    }
+                },
+                "x-amazon-lambda": {
+                    "handler": "./controllers/sessions/create.js",
+                    "memorySize": "",
+                    "role": "",
+                    "timeout": "",
+                    "runtime": ""
+                },
+                "x-amazon-apigateway-integration": {
+                    "type": "AWS",
+                    "apiKeyRequired": false,
+                    "httpMethod": "POST",
+                    "cacheNamespace": null,
+                    "cacheKeyParameters": [],
+                    "credentials": null,
+                    "requestTemplates": {},
+                    "requestParameters": {
+                        "method.request.header.Authorization": true
+                    },
+                    "requestModels": {
+                        "application/json": "Empty"
+                    },
+                    "responses": {
+                        "200": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
+                                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            },
+                            "responseTemplates": {
+                                "application/json": {
+                                    "payload": "$input.params()",
+                                    "path": "$input.params().path",
+                                    "query": "$input.params().querystring",
+                                    "header": "$input.params().header",
+                                    "Authorization": "$input.params(\"Authorization\")"
+                                }
+                            },
+                            "responseModels": {
+                                "application/json": "Empty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/votes": {
+            "options": {
+                "x-amazon-apigateway-integration": {
+                    "type": "MOCK",
+                    "requestTemplates": {
+                        "application/json": {
+                            "statusCode": 200
+                        }
+                    },
+                    "requestParameters": {
+                        "method.request.header.Authorization": true
+                    },
+                    "requestModels": {
+                        "application/json": "Empty"
+                    },
+                    "responses": {
+                        "200": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
+                                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            },
+                            "responseTemplates": {
+                                "application/json": null
+                            },
+                            "responseModels": {
+                                "application/json": "Empty"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "operationId": "GovVoteAPI-Votes-POST",
+                "x-api-deploy": {
+                    "sdk": {
+                        "method": "votes"
+                    }
+                },
+                "x-amazon-lambda": {
+                    "handler": "./controllers/votes/create.js",
+                    "memorySize": "",
+                    "role": "",
+                    "timeout": "",
+                    "runtime": ""
+                },
+                "x-amazon-apigateway-integration": {
+                    "type": "AWS",
+                    "apiKeyRequired": false,
+                    "httpMethod": "POST",
+                    "cacheNamespace": null,
+                    "cacheKeyParameters": [],
+                    "credentials": null,
+                    "requestTemplates": {},
+                    "requestParameters": {
+                        "method.request.header.Authorization": true
+                    },
+                    "requestModels": {
+                        "application/json": "Empty"
+                    },
+                    "responses": {
+                        "200": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
+                                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            },
+                            "responseTemplates": {
+                                "application/json": {
+                                    "payload": "$input.params()",
+                                    "path": "$input.params().path",
+                                    "query": "$input.params().querystring",
+                                    "header": "$input.params().header",
+                                    "Authorization": "$input.params(\"Authorization\")"
+                                }
+                            },
+                            "responseModels": {
+                                "application/json": "Empty"
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "operationId": "GovVoteAPI-Votes-GET",
+                "x-api-deploy": {
+                    "sdk": {
+                        "method": "votes"
+                    }
+                },
+                "x-amazon-lambda": {
+                    "handler": "./controllers/votes/index.js",
+                    "memorySize": "",
+                    "role": "",
+                    "timeout": "",
+                    "runtime": ""
+                },
+                "x-amazon-apigateway-integration": {
+                    "type": "AWS",
+                    "apiKeyRequired": false,
+                    "httpMethod": "POST",
+                    "cacheNamespace": null,
+                    "cacheKeyParameters": [],
+                    "credentials": null,
+                    "requestTemplates": {},
+                    "requestParameters": {
+                        "method.request.header.Authorization": true
+                    },
+                    "requestModels": {
+                        "application/json": "Empty"
+                    },
+                    "responses": {
+                        "200": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
+                                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            },
+                            "responseTemplates": {
+                                "application/json": {
+                                    "payload": "$input.params()",
+                                    "path": "$input.params().path",
+                                    "query": "$input.params().querystring",
+                                    "header": "$input.params().header",
+                                    "Authorization": "$input.params(\"Authorization\")"
+                                }
+                            },
+                            "responseModels": {
+                                "application/json": "Empty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/stances/{id}": {
+            "options": {
+                "x-amazon-apigateway-integration": {
+                    "type": "MOCK",
+                    "requestTemplates": {
+                        "application/json": {
+                            "statusCode": 200
+                        }
+                    },
+                    "requestParameters": {
+                        "method.request.header.Authorization": true
+                    },
+                    "requestModels": {
+                        "application/json": "Empty"
+                    },
+                    "responses": {
+                        "200": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
+                                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            },
+                            "responseTemplates": {
+                                "application/json": null
+                            },
+                            "responseModels": {
+                                "application/json": "Empty"
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "operationId": "GovVoteAPI-Stances-Id-PUT",
+                "x-api-deploy": {
+                    "sdk": {
+                        "method": "stancesId"
+                    }
+                },
+                "x-amazon-lambda": {
+                    "handler": "./controllers/stances/update.js",
+                    "memorySize": "",
+                    "role": "",
+                    "timeout": "",
+                    "runtime": ""
+                },
+                "x-amazon-apigateway-integration": {
+                    "type": "AWS",
+                    "apiKeyRequired": false,
+                    "httpMethod": "POST",
+                    "cacheNamespace": null,
+                    "cacheKeyParameters": [],
+                    "credentials": null,
+                    "requestTemplates": {},
+                    "requestParameters": {
+                        "method.request.header.Authorization": true
+                    },
+                    "requestModels": {
+                        "application/json": "Empty"
+                    },
+                    "responses": {
+                        "200": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
+                                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            },
+                            "responseTemplates": {
+                                "application/json": {
+                                    "payload": "$input.params()",
+                                    "path": "$input.params().path",
+                                    "query": "$input.params().querystring",
+                                    "header": "$input.params().header",
+                                    "Authorization": "$input.params(\"Authorization\")"
+                                }
+                            },
+                            "responseModels": {
+                                "application/json": "Empty"
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "operationId": "GovVoteAPI-Stances-Id-GET",
+                "x-api-deploy": {
+                    "sdk": {
+                        "method": "stancesId"
+                    }
+                },
+                "x-amazon-lambda": {
+                    "handler": "./controllers/stances/show.js",
+                    "memorySize": "",
+                    "role": "",
+                    "timeout": "",
+                    "runtime": ""
+                },
+                "x-amazon-apigateway-integration": {
+                    "type": "AWS",
+                    "apiKeyRequired": false,
+                    "httpMethod": "POST",
+                    "cacheNamespace": null,
+                    "cacheKeyParameters": [],
+                    "credentials": null,
+                    "requestTemplates": {},
+                    "requestParameters": {
+                        "method.request.header.Authorization": true
+                    },
+                    "requestModels": {
+                        "application/json": "Empty"
+                    },
+                    "responses": {
+                        "200": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
+                                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            },
+                            "responseTemplates": {
+                                "application/json": {
+                                    "payload": "$input.params()",
+                                    "path": "$input.params().path",
+                                    "query": "$input.params().querystring",
+                                    "header": "$input.params().header",
+                                    "Authorization": "$input.params(\"Authorization\")"
+                                }
+                            },
+                            "responseModels": {
+                                "application/json": "Empty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/stances": {
+            "options": {
+                "x-amazon-apigateway-integration": {
+                    "type": "MOCK",
+                    "requestTemplates": {
+                        "application/json": {
+                            "statusCode": 200
+                        }
+                    },
+                    "requestParameters": {
+                        "method.request.header.Authorization": true
+                    },
+                    "requestModels": {
+                        "application/json": "Empty"
+                    },
+                    "responses": {
+                        "200": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
+                                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            },
+                            "responseTemplates": {
+                                "application/json": null
+                            },
+                            "responseModels": {
+                                "application/json": "Empty"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "operationId": "GovVoteAPI-Stances-POST",
+                "x-api-deploy": {
+                    "sdk": {
+                        "method": "stances"
+                    }
+                },
+                "x-amazon-lambda": {
+                    "handler": "./controllers/stances/create.js",
+                    "memorySize": "",
+                    "role": "",
+                    "timeout": "",
+                    "runtime": ""
+                },
+                "x-amazon-apigateway-integration": {
+                    "type": "AWS",
+                    "apiKeyRequired": false,
+                    "httpMethod": "POST",
+                    "cacheNamespace": null,
+                    "cacheKeyParameters": [],
+                    "credentials": null,
+                    "requestTemplates": {},
+                    "requestParameters": {
+                        "method.request.header.Authorization": true
+                    },
+                    "requestModels": {
+                        "application/json": "Empty"
+                    },
+                    "responses": {
+                        "200": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
+                                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            },
+                            "responseTemplates": {
+                                "application/json": {
+                                    "payload": "$input.params()",
+                                    "path": "$input.params().path",
+                                    "query": "$input.params().querystring",
+                                    "header": "$input.params().header",
+                                    "Authorization": "$input.params(\"Authorization\")"
+                                }
+                            },
+                            "responseModels": {
+                                "application/json": "Empty"
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "operationId": "GovVoteAPI-Stances-GET",
+                "x-api-deploy": {
+                    "sdk": {
+                        "method": "stances"
+                    }
+                },
+                "x-amazon-lambda": {
+                    "handler": "./controllers/stances/index.js",
+                    "memorySize": "",
+                    "role": "",
+                    "timeout": "",
+                    "runtime": ""
+                },
+                "x-amazon-apigateway-integration": {
+                    "type": "AWS",
+                    "apiKeyRequired": false,
+                    "httpMethod": "POST",
+                    "cacheNamespace": null,
+                    "cacheKeyParameters": [],
+                    "credentials": null,
+                    "requestTemplates": {},
+                    "requestParameters": {
+                        "method.request.header.Authorization": true
+                    },
+                    "requestModels": {
+                        "application/json": "Empty"
+                    },
+                    "responses": {
+                        "200": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
+                                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            },
+                            "responseTemplates": {
+                                "application/json": {
+                                    "payload": "$input.params()",
+                                    "path": "$input.params().path",
+                                    "query": "$input.params().querystring",
+                                    "header": "$input.params().header",
+                                    "Authorization": "$input.params(\"Authorization\")"
+                                }
+                            },
+                            "responseModels": {
+                                "application/json": "Empty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/issues/{id}": {
+            "options": {
+                "x-amazon-apigateway-integration": {
+                    "type": "MOCK",
+                    "requestTemplates": {
+                        "application/json": {
+                            "statusCode": 200
+                        }
+                    },
+                    "requestParameters": {
+                        "method.request.header.Authorization": true
+                    },
+                    "requestModels": {
+                        "application/json": "Empty"
+                    },
+                    "responses": {
+                        "200": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
+                                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            },
+                            "responseTemplates": {
+                                "application/json": null
+                            },
+                            "responseModels": {
+                                "application/json": "Empty"
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "operationId": "GovVoteAPI-Issues-Id-PUT",
+                "x-api-deploy": {
+                    "sdk": {
+                        "method": "issuesId"
+                    }
+                },
+                "x-amazon-lambda": {
+                    "handler": "./controllers/issues/update.js",
+                    "memorySize": "",
+                    "role": "",
+                    "timeout": "",
+                    "runtime": ""
+                },
+                "x-amazon-apigateway-integration": {
+                    "type": "AWS",
+                    "apiKeyRequired": false,
+                    "httpMethod": "POST",
+                    "cacheNamespace": null,
+                    "cacheKeyParameters": [],
+                    "credentials": null,
+                    "requestTemplates": {},
+                    "requestParameters": {
+                        "method.request.header.Authorization": true
+                    },
+                    "requestModels": {
+                        "application/json": "Empty"
+                    },
+                    "responses": {
+                        "200": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
+                                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            },
+                            "responseTemplates": {
+                                "application/json": {
+                                    "payload": "$input.params()",
+                                    "path": "$input.params().path",
+                                    "query": "$input.params().querystring",
+                                    "header": "$input.params().header",
+                                    "Authorization": "$input.params(\"Authorization\")"
+                                }
+                            },
+                            "responseModels": {
+                                "application/json": "Empty"
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "operationId": "GovVoteAPI-Issues-Id-GET",
+                "x-api-deploy": {
+                    "sdk": {
+                        "method": "issuesId"
+                    }
+                },
+                "x-amazon-lambda": {
+                    "handler": "./controllers/issues/show.js",
+                    "memorySize": "",
+                    "role": "",
+                    "timeout": "",
+                    "runtime": ""
+                },
+                "x-amazon-apigateway-integration": {
+                    "type": "AWS",
+                    "apiKeyRequired": false,
+                    "httpMethod": "POST",
+                    "cacheNamespace": null,
+                    "cacheKeyParameters": [],
+                    "credentials": null,
+                    "requestTemplates": {},
+                    "requestParameters": {
+                        "method.request.header.Authorization": true
+                    },
+                    "requestModels": {
+                        "application/json": "Empty"
+                    },
+                    "responses": {
+                        "200": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
+                                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            },
+                            "responseTemplates": {
+                                "application/json": {
+                                    "payload": "$input.params()",
+                                    "path": "$input.params().path",
+                                    "query": "$input.params().querystring",
+                                    "header": "$input.params().header",
+                                    "Authorization": "$input.params(\"Authorization\")"
+                                }
+                            },
+                            "responseModels": {
+                                "application/json": "Empty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/issues": {
+            "options": {
+                "x-amazon-apigateway-integration": {
+                    "type": "MOCK",
+                    "requestTemplates": {
+                        "application/json": {
+                            "statusCode": 200
+                        }
+                    },
+                    "requestParameters": {
+                        "method.request.header.Authorization": true
+                    },
+                    "requestModels": {
+                        "application/json": "Empty"
+                    },
+                    "responses": {
+                        "200": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
+                                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            },
+                            "responseTemplates": {
+                                "application/json": null
+                            },
+                            "responseModels": {
+                                "application/json": "Empty"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "operationId": "GovVoteAPI-Issues-POST",
+                "x-api-deploy": {
+                    "sdk": {
+                        "method": "issues"
+                    }
+                },
+                "x-amazon-lambda": {
+                    "handler": "./controllers/issues/create.js",
+                    "memorySize": "",
+                    "role": "",
+                    "timeout": "",
+                    "runtime": ""
+                },
+                "x-amazon-apigateway-integration": {
+                    "type": "AWS",
+                    "apiKeyRequired": false,
+                    "httpMethod": "POST",
+                    "cacheNamespace": null,
+                    "cacheKeyParameters": [],
+                    "credentials": null,
+                    "requestTemplates": {},
+                    "requestParameters": {
+                        "method.request.header.Authorization": true
+                    },
+                    "requestModels": {
+                        "application/json": "Empty"
+                    },
+                    "responses": {
+                        "200": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
+                                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            },
+                            "responseTemplates": {
+                                "application/json": {
+                                    "payload": "$input.params()",
+                                    "path": "$input.params().path",
+                                    "query": "$input.params().querystring",
+                                    "header": "$input.params().header",
+                                    "Authorization": "$input.params(\"Authorization\")"
+                                }
+                            },
+                            "responseModels": {
+                                "application/json": "Empty"
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "operationId": "GovVoteAPI-Issues-GET",
+                "x-api-deploy": {
+                    "sdk": {
+                        "method": "issues"
+                    }
+                },
+                "x-amazon-lambda": {
+                    "handler": "./controllers/issues/index.js",
+                    "memorySize": "",
+                    "role": "",
+                    "timeout": "",
+                    "runtime": ""
+                },
+                "x-amazon-apigateway-integration": {
+                    "type": "AWS",
+                    "apiKeyRequired": false,
+                    "httpMethod": "POST",
+                    "cacheNamespace": null,
+                    "cacheKeyParameters": [],
+                    "credentials": null,
+                    "requestTemplates": {},
+                    "requestParameters": {
+                        "method.request.header.Authorization": true
+                    },
+                    "requestModels": {
+                        "application/json": "Empty"
+                    },
+                    "responses": {
+                        "200": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
+                                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            },
+                            "responseTemplates": {
+                                "application/json": {
+                                    "payload": "$input.params()",
+                                    "path": "$input.params().path",
+                                    "query": "$input.params().querystring",
+                                    "header": "$input.params().header",
+                                    "Authorization": "$input.params(\"Authorization\")"
+                                }
+                            },
+                            "responseModels": {
+                                "application/json": "Empty"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

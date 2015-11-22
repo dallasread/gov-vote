@@ -12,7 +12,14 @@ export default Ember.Controller.extend({
     }.observes('title'),
     actions: {
         suggest: function suggest() {
-            console.log(this.get('permalink'), 'redirect to page');
+            var _ = this,
+                issue = _.store.createRecord('issue', {
+                    title: _.get('title'),
+                    permalink: _.get('permalink'),
+                    description: _.get('description')
+                });
+                
+            this.transitionToRoute('issue', issue.save());
         },
     }
 });

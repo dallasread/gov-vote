@@ -1,23 +1,19 @@
-var DBModel = require('../utils/db-model'),
-    Joi = require('joi'),
-    UUID = require('../utils/uuid').generateUUID('U-xxxxyxxxxyxxxxyxxxxy', 62);
+var vogels = require('vogels'),
+    Joi = require('joi');
 
-var Issue = DBModel.create({
-    itemName: 'issue',
+var Issue = vogels.define('Issue', {
     tableName: 'GovVote-Issues',
-    hashKey : 'id',
-    useUUID: true,
-    UUID: UUID,
+    hashKey: 'id',
 
-    storeSchema: Joi.object().keys({
-        id: Joi.string(),
-        password: Joi.string(),
-        email: Joi.string().lowercase(),
-    }).options({ stripUnknown: true, convert: true }),
+    timestamps: true,
 
-    returnSchema: Joi.object().keys({
-        id: Joi.string()
-    })
+    schema: Joi.object().keys({
+        id:           vogels.types.uuid().required(),
+        active:       Joi.boolean().default(false).required(),
+        title:        Joi.string().required(),
+        permalink:    Joi.string().required(),
+        description:  Joi.string().required()
+    }).options({ stripUnknown : true })
 });
 
 module.exports = Issue;

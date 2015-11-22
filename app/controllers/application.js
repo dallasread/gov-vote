@@ -1,3 +1,5 @@
+/* global GovVoteAPI */
+
 import Ember from 'ember';
 import FB from 'ember-cli-facebook-js-sdk/fb';
 
@@ -18,22 +20,27 @@ export default Ember.Controller.extend({
         toggleSidebar() {
             this.toggleProperty('isSidebarVisible');
         },
+        facebookResponse(response) {
+            var _ = this;
+
+            GovVoteAPI.sessionsCreate(response.authResponse, function(err, user) {
+                _.set('session.isAuthenticated', true);
+                _.set('component-login-modal.open', false);
+                _.set('session.user', user);
+            });
+        },
         facebookAuth() {
             var _ = this;
 
-            FB.init({
-                appId: '518529864982040',
-                version: 'v2.5',
-                xfbml: false
-            }).then(function() {
-                FB.login(function(){}, {scope: 'publish_actions'}).then(function(response) {
-                    if (response.status === 'connected') {
-                        _.set('session.isAuthenticated', true);
-                        _.set('component-login-modal.open', false);
-                    } else {
-                        alert('Something went wrong. Please try again.');
-                    }
-                });
+            FB.login(['email']).then(function(response) { // user_hometown
+                if (response.status === 'connected') {
+                    FB.api('/me').then(function(user) {
+                        response.authResponse.name = user.name;
+                        _.send('facebookResponse', response);
+                    });
+                } else {
+                    alert('Something went wrong. Please try again.');
+                }
             });
         }
     }

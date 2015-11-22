@@ -6,6 +6,10 @@ export default Ember.Route.extend({
     },
     setupController(controller, model) {
         controller.set('model', model);
-        controller.set('checkedStance', null);
+        this.store.filter('vote', function(i) {
+            if (model === i.get('issue')) {
+                controller.set('checkedStance', i.get('stance'));
+            }
+        });
     }
 });
