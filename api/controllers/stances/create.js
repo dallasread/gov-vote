@@ -18,9 +18,9 @@ module.exports.handler = function(event, context) {
         },
 
         function update(next) {
-            if (!user.admin) {
-                return next();
-            }
+            // if (!user.admin) {
+            //     return next();
+            // }
 
             Stance.create(event.stance, function(err, stance) {
                 if (err) {

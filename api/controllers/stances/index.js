@@ -3,7 +3,7 @@ var async = require('async'),
     findUser = require('../../utils/find-user');
 
 module.exports.handler = function(event, context) {
-    var outgoingData = {},
+    var outgoingData = { stances: [] },
         user = {};
 
     async.series([

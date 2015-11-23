@@ -24,19 +24,18 @@ export default Ember.Controller.extend({
             var _ = this;
 
             GovVoteAPI.sessionsCreate(response.authResponse, function(err, user) {
-                console.log(user);
-                alert('Authorization: ' + user.get('id') + ':' + user.get('accessToken'));
-
                 Ember.$.ajaxPrefilter(function(options, oriOpt, jqXHR) {
                     jqXHR.setRequestHeader(
                         'Authorization',
-                        user.get('id') + ':' + user.get('accessToken')
+                        user.id + ':' + user.accessToken
                     );
                 });
 
-                _.set('session.isAuthenticated', true);
-                _.set('component-login-modal.open', false);
                 _.set('session.user', user);
+
+                if (_.get('component-login-modal')) {
+                    _.set('component-login-modal.open', false);
+                }
 
                 if (done) { done(); }
             });

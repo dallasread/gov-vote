@@ -42,6 +42,7 @@ export default Ember.Component.extend({
         save: function save() {
             if (this.get('stance.id') === 'suggest') {
                 var data = this.get('stance').toJSON();
+                data.id = this.get('newID');
                 data.issue = this.get('stance.issue');
                 var stance = this.store.createRecord('stance', data);
                 stance.save();

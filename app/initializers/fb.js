@@ -13,7 +13,6 @@ export default {
             if (response.status === 'connected') {
                 container.lookup('controller:application')
                     .send('facebookResponse', response, function() {
-                        alert(1)
                         app.advanceReadiness();
                     });
             }

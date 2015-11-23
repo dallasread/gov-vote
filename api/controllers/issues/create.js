@@ -17,9 +17,9 @@ module.exports.handler = function(event, context) {
             });
         },
         function update(next) {
-            if (!user.admin) {
-                return next();
-            }
+            // if (!user.admin) {
+            //     return next();
+            // }
 
             Issue.create(event.issue, function(err, issue) {
                 if (err) {

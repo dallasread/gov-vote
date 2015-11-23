@@ -31,7 +31,7 @@ export default Ember.Controller.extend({
 
             function act() {
                 if (_.get('checkedStance')) {
-                    if (_.get('session.isAuthenticated')) {
+                    if (_.get('session.user')) {
                         _.send('save');
                     } else {
                         app.set('component-login-modal.onClose', act);
@@ -47,7 +47,7 @@ export default Ember.Controller.extend({
                 app = _.controllerFor('application');
 
             function act() {
-                if (_.get('session.isAuthenticated')) {
+                if (_.get('session.user')) {
                     _.transitionTo('issue.stance.page', _.model.id, 'suggest', 'overview');
                 } else {
                     app.set('component-login-modal.onClose', act);

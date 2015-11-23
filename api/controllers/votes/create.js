@@ -8,11 +8,11 @@ module.exports.handler = function(event, context) {
     async.series([
         function auth(next) {
             findUser(event, outgoingData, function(err, u) {
-                if (err) {
+                if (!u) {
                     return next(new Error('User not logged in.'));
                 }
 
-                event.vote.user = u;
+                event.vote.user = u.get('id');
                 next();
             });
         },

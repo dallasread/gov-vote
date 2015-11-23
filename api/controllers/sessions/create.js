@@ -1,4 +1,5 @@
 var async = require('async'),
+    config = require('../../config'),
     User = require('../../models/user');
 
 module.exports.handler = function(event, context) {
@@ -35,12 +36,10 @@ module.exports.handler = function(event, context) {
                 outgoingData = user.toJSON();
                 next();
             });
-
-            return next();
         },
 
         function createUser(next) {
-            if (outgoingData.id) {
+            if (outgoingData.id || !event.userID) {
                 return next();
             }
 
@@ -56,6 +55,14 @@ module.exports.handler = function(event, context) {
                 outgoingData = user.toJSON();
                 next();
             });
+        },
+
+        function setAdmin(next) {
+            if (outgoingData.id === config.admin) {
+                outgoingData.admin = true;
+            }
+
+            next();
         }
     ], function(err) {
         context.done(err, outgoingData);

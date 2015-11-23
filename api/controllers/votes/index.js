@@ -3,7 +3,7 @@ var async = require('async'),
     findUser = require('../../utils/find-user');
 
 module.exports.handler = function(event, context) {
-    var outgoingData = {},
+    var outgoingData = { votes: [] },
         user = null;
 
     async.series([
@@ -19,12 +19,12 @@ module.exports.handler = function(event, context) {
 
         function index(next) {
             if (!user) {
-                next();
+                return next();
             }
 
             Vote
                 .scan()
-                .where('user').equals(user.get('id') + '1')
+                .where('user').equals(user.get('id'))
                 .exec(function(err, votes) {
                     if (err) {
                         return next(err);

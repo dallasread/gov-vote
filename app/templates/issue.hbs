@@ -27,9 +27,11 @@
                 Save My Vote
             </button>
 
-            <a class="learn-more" {{action 'suggest' on='click'}}>
-                Suggest An Answer
-            </a>
+            {{#if session.user.admin}}
+                <a class="learn-more" {{action 'suggest' on='click'}}>
+                    Suggest An Answer
+                </a>
+            {{/if}}
         </div>
     </form>
 </div>

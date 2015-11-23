@@ -4,7 +4,6 @@ var vogels = require('vogels'),
 var User = vogels.define('User', {
     tableName: 'GovVote-Users',
     hashKey: 'id',
-    rangeKey: 'accessToken',
 
     timestamps: true,
 

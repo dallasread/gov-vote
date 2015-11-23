@@ -15,10 +15,10 @@
                 <h1 class="stance-heading">{{stance.title}}</h1>
             {{/if}}
 
-            {{#if isEditing}}
-                {{#unless stance.id}}
-                    {{input type="text" value=stance.id placeholder="Permalink"}}
-                {{/unless}}
+            {{#if session.user.admin}}
+                {{#if stance.isSuggesting}}
+                    {{input type="text" value=newID placeholder="Permalink"}}
+                {{/if}}
             {{/if}}
 
             <a {{action 'changeStance' 1 on='click'}} class="stance-heading">
@@ -64,7 +64,7 @@
                     {{/link-to}}
                 </li> -->
 
-                {{#if session.isAuthenticated}}
+                {{#if session.user.admin}}
                     <li>
                         <a {{action 'edit' on='click'}}>
                             {{#if isEditing}}
