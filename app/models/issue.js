@@ -3,7 +3,6 @@ import DS from 'ember-data';
 var Issue = DS.Model.extend({
     title: DS.attr('string'),
     description: DS.attr('string'),
-
     stances: DS.hasMany('stance', { async: true })
 });
 

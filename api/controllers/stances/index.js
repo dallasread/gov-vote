@@ -24,6 +24,10 @@ module.exports.handler = function(event, context) {
                 query = query.where('active').equals(true);
             }
 
+            if (event.query.issue) {
+                query = query.where('issue').equals(event.query.issue);
+            }
+
             query.exec(function(err, stances) {
                 if (err) {
                     return next(err);

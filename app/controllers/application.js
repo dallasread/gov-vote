@@ -32,14 +32,16 @@ export default Ember.Controller.extend({
                         );
                     }
                 });
+                
+                _.store.findAll('vote').then(function() {
+                    _.set('session.user', user);
 
-                _.set('session.user', user);
+                    if (_.get('component-login-modal')) {
+                        _.set('component-login-modal.open', false);
+                    }
 
-                if (_.get('component-login-modal')) {
-                    _.set('component-login-modal.open', false);
-                }
-
-                if (done) { done(); }
+                    if (done) { done(); }
+                });
             });
         },
         facebookAuth() {
