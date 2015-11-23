@@ -20,13 +20,25 @@ export default Ember.Controller.extend({
         toggleSidebar() {
             this.toggleProperty('isSidebarVisible');
         },
-        facebookResponse(response) {
+        facebookResponse(response, done) {
             var _ = this;
 
             GovVoteAPI.sessionsCreate(response.authResponse, function(err, user) {
+                console.log(user);
+                alert('Authorization: ' + user.get('id') + ':' + user.get('accessToken'));
+
+                Ember.$.ajaxPrefilter(function(options, oriOpt, jqXHR) {
+                    jqXHR.setRequestHeader(
+                        'Authorization',
+                        user.get('id') + ':' + user.get('accessToken')
+                    );
+                });
+
                 _.set('session.isAuthenticated', true);
                 _.set('component-login-modal.open', false);
                 _.set('session.user', user);
+
+                if (done) { done(); }
             });
         },
         facebookAuth() {

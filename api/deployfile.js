@@ -1,6 +1,7 @@
 var deployer = require('api-deploy').configure({
         sdk: {
             name: 'GovVoteAPI',
+            url: 'https://d60u7metbl.execute-api.us-east-1.amazonaws.com/dev',
             path: '../api-sdk.js'
         },
         swagger: {
@@ -32,27 +33,30 @@ var deployer = require('api-deploy').configure({
             '/sessions': {
                 'post': './controllers/sessions/create.js'
             },
-            '/sessions/auth': {
-                'post': './controllers/sessions/auth.js'
-            }
+            // '/sessions/auth': {
+            //     'post': './controllers/sessions/auth.js'
+            // }
         }
     }),
     awsDefaults = {
         lambda: {
-            // role: 'arn:aws:iam::3567654345676543:role'
+            role: 'arn:aws:iam::347191724861:role/Lambda'
         },
         aws: {
-            region: 'us-east-1'
+            profile: 'default',
+            region: 'us-east-1',
+            require: 'require(\'vogels\').AWS'
         },
         uglify: {
-            mangle: false,
-            compress: {
-                unused: false
-            }
+            // mangle: false,
+            // compress: {
+            //     unused: false
+            // }
         }
     };
 
 deployer.plugins.lambda.configure(awsDefaults);
+deployer.plugins.apigateway.configure(awsDefaults);
 deployer.plugins.local.configure(awsDefaults);
 
 module.exports = deployer;

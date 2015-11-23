@@ -1,13 +1,24 @@
 var async = require('async'),
-    Vote = require('../../models/vote');
+    Vote = require('../../models/vote'),
+    findUser = require('../../utils/find-user');
 
 module.exports.handler = function(event, context) {
-    var outgoingData = {},
-        admin = true;
+    var outgoingData = {};
 
     async.series([
+        function auth(next) {
+            findUser(event, outgoingData, function(err, u) {
+                if (err) {
+                    return next(new Error('User not logged in.'));
+                }
+
+                event.vote.user = u;
+                next();
+            });
+        },
+
         function update(next) {
-            if (!admin) {
+            if (!event.vote.user) {
                 return next();
             }
 

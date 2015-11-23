@@ -8,10 +8,9 @@ var Issue = vogels.define('Issue', {
     timestamps: true,
 
     schema: Joi.object().keys({
-        id:           vogels.types.uuid().required(),
+        id:           Joi.string().required(),
         active:       Joi.boolean().default(false).required(),
         title:        Joi.string().required(),
-        permalink:    Joi.string().required(),
         description:  Joi.string().required()
     }).options({ stripUnknown : true })
 });

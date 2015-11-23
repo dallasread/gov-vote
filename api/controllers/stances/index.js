@@ -1,11 +1,22 @@
 var async = require('async'),
-    Stance = require('../../models/stance');
+    Stance = require('../../models/stance'),
+    findUser = require('../../utils/find-user');
 
 module.exports.handler = function(event, context) {
     var outgoingData = {},
-        admin = true;
+        user = {};
 
     async.series([
+        function auth(next) {
+            findUser(event, outgoingData, function(err, u) {
+                if (u) {
+                    user = u;
+                }
+
+                next();
+            });
+        },
+
         function index(next) {
             var query = Stance
                 .scan();
@@ -14,7 +25,7 @@ module.exports.handler = function(event, context) {
                 query = query.where('issue').equals(event.issue);
             }
 
-            if (!admin) {
+            if (!user.admin) {
                 query = query.where('active').equals(true);
             }
 

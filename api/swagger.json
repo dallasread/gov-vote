@@ -1,91 +1,5 @@
 {
     "paths": {
-        "/sessions/auth": {
-            "options": {
-                "x-amazon-apigateway-integration": {
-                    "type": "MOCK",
-                    "requestTemplates": {
-                        "application/json": {
-                            "statusCode": 200
-                        }
-                    },
-                    "requestParameters": {
-                        "method.request.header.Authorization": true
-                    },
-                    "requestModels": {
-                        "application/json": "Empty"
-                    },
-                    "responses": {
-                        "200": {
-                            "statusCode": "200",
-                            "responseParameters": {
-                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
-                                "method.response.header.Access-Control-Allow-Methods": "'*'",
-                                "method.response.header.Access-Control-Allow-Origin": "'*'"
-                            },
-                            "responseTemplates": {
-                                "application/json": null
-                            },
-                            "responseModels": {
-                                "application/json": "Empty"
-                            }
-                        }
-                    }
-                }
-            },
-            "post": {
-                "operationId": "GovVoteAPI-Sessions-Auth-POST",
-                "x-api-deploy": {
-                    "sdk": {
-                        "method": "sessionsAuth"
-                    }
-                },
-                "x-amazon-lambda": {
-                    "handler": "./controllers/sessions/auth.js",
-                    "memorySize": "",
-                    "role": "",
-                    "timeout": "",
-                    "runtime": ""
-                },
-                "x-amazon-apigateway-integration": {
-                    "type": "AWS",
-                    "apiKeyRequired": false,
-                    "httpMethod": "POST",
-                    "cacheNamespace": null,
-                    "cacheKeyParameters": [],
-                    "credentials": null,
-                    "requestTemplates": {},
-                    "requestParameters": {
-                        "method.request.header.Authorization": true
-                    },
-                    "requestModels": {
-                        "application/json": "Empty"
-                    },
-                    "responses": {
-                        "200": {
-                            "statusCode": "200",
-                            "responseParameters": {
-                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
-                                "method.response.header.Access-Control-Allow-Methods": "'*'",
-                                "method.response.header.Access-Control-Allow-Origin": "'*'"
-                            },
-                            "responseTemplates": {
-                                "application/json": {
-                                    "payload": "$input.params()",
-                                    "path": "$input.params().path",
-                                    "query": "$input.params().querystring",
-                                    "header": "$input.params().header",
-                                    "Authorization": "$input.params(\"Authorization\")"
-                                }
-                            },
-                            "responseModels": {
-                                "application/json": "Empty"
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/sessions": {
             "options": {
                 "x-amazon-apigateway-integration": {
@@ -123,7 +37,7 @@
                 "operationId": "GovVoteAPI-Sessions-POST",
                 "x-api-deploy": {
                     "sdk": {
-                        "method": "sessions"
+                        "method": "sessionsCreate"
                     }
                 },
                 "x-amazon-lambda": {
@@ -131,7 +45,8 @@
                     "memorySize": "",
                     "role": "",
                     "timeout": "",
-                    "runtime": ""
+                    "runtime": "",
+                    "arn": "arn:aws:lambda:us-east-1:347191724861:function:GovVoteAPI-Sessions-POST"
                 },
                 "x-amazon-apigateway-integration": {
                     "type": "AWS",
@@ -168,8 +83,12 @@
                                 "application/json": "Empty"
                             }
                         }
-                    }
+                    },
+                    "uri": "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:347191724861:function:GovVoteAPI-Sessions-POST/invocations"
                 }
+            },
+            "x-amazon-apigateway-resource": {
+                "id": "n478my"
             }
         },
         "/votes": {
@@ -217,7 +136,8 @@
                     "memorySize": "",
                     "role": "",
                     "timeout": "",
-                    "runtime": ""
+                    "runtime": "",
+                    "arn": "arn:aws:lambda:us-east-1:347191724861:function:GovVoteAPI-Votes-POST"
                 },
                 "x-amazon-apigateway-integration": {
                     "type": "AWS",
@@ -254,7 +174,8 @@
                                 "application/json": "Empty"
                             }
                         }
-                    }
+                    },
+                    "uri": "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:347191724861:function:GovVoteAPI-Votes-POST/invocations"
                 }
             },
             "get": {
@@ -269,7 +190,8 @@
                     "memorySize": "",
                     "role": "",
                     "timeout": "",
-                    "runtime": ""
+                    "runtime": "",
+                    "arn": "arn:aws:lambda:us-east-1:347191724861:function:GovVoteAPI-Votes-GET"
                 },
                 "x-amazon-apigateway-integration": {
                     "type": "AWS",
@@ -306,8 +228,12 @@
                                 "application/json": "Empty"
                             }
                         }
-                    }
+                    },
+                    "uri": "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:347191724861:function:GovVoteAPI-Votes-GET/invocations"
                 }
+            },
+            "x-amazon-apigateway-resource": {
+                "id": "2d4pf1"
             }
         },
         "/stances/{id}": {
@@ -355,7 +281,8 @@
                     "memorySize": "",
                     "role": "",
                     "timeout": "",
-                    "runtime": ""
+                    "runtime": "",
+                    "arn": "arn:aws:lambda:us-east-1:347191724861:function:GovVoteAPI-Stances-Id-PUT"
                 },
                 "x-amazon-apigateway-integration": {
                     "type": "AWS",
@@ -392,7 +319,8 @@
                                 "application/json": "Empty"
                             }
                         }
-                    }
+                    },
+                    "uri": "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:347191724861:function:GovVoteAPI-Stances-Id-PUT/invocations"
                 }
             },
             "get": {
@@ -407,7 +335,8 @@
                     "memorySize": "",
                     "role": "",
                     "timeout": "",
-                    "runtime": ""
+                    "runtime": "",
+                    "arn": "arn:aws:lambda:us-east-1:347191724861:function:GovVoteAPI-Stances-Id-GET"
                 },
                 "x-amazon-apigateway-integration": {
                     "type": "AWS",
@@ -444,8 +373,12 @@
                                 "application/json": "Empty"
                             }
                         }
-                    }
+                    },
+                    "uri": "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:347191724861:function:GovVoteAPI-Stances-Id-GET/invocations"
                 }
+            },
+            "x-amazon-apigateway-resource": {
+                "id": "6o5dis"
             }
         },
         "/stances": {
@@ -493,7 +426,8 @@
                     "memorySize": "",
                     "role": "",
                     "timeout": "",
-                    "runtime": ""
+                    "runtime": "",
+                    "arn": "arn:aws:lambda:us-east-1:347191724861:function:GovVoteAPI-Stances-POST"
                 },
                 "x-amazon-apigateway-integration": {
                     "type": "AWS",
@@ -530,7 +464,8 @@
                                 "application/json": "Empty"
                             }
                         }
-                    }
+                    },
+                    "uri": "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:347191724861:function:GovVoteAPI-Stances-POST/invocations"
                 }
             },
             "get": {
@@ -545,7 +480,8 @@
                     "memorySize": "",
                     "role": "",
                     "timeout": "",
-                    "runtime": ""
+                    "runtime": "",
+                    "arn": "arn:aws:lambda:us-east-1:347191724861:function:GovVoteAPI-Stances-GET"
                 },
                 "x-amazon-apigateway-integration": {
                     "type": "AWS",
@@ -582,8 +518,12 @@
                                 "application/json": "Empty"
                             }
                         }
-                    }
+                    },
+                    "uri": "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:347191724861:function:GovVoteAPI-Stances-GET/invocations"
                 }
+            },
+            "x-amazon-apigateway-resource": {
+                "id": "19i50g"
             }
         },
         "/issues/{id}": {
@@ -631,7 +571,8 @@
                     "memorySize": "",
                     "role": "",
                     "timeout": "",
-                    "runtime": ""
+                    "runtime": "",
+                    "arn": "arn:aws:lambda:us-east-1:347191724861:function:GovVoteAPI-Issues-Id-PUT"
                 },
                 "x-amazon-apigateway-integration": {
                     "type": "AWS",
@@ -668,7 +609,8 @@
                                 "application/json": "Empty"
                             }
                         }
-                    }
+                    },
+                    "uri": "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:347191724861:function:GovVoteAPI-Issues-Id-PUT/invocations"
                 }
             },
             "get": {
@@ -683,7 +625,8 @@
                     "memorySize": "",
                     "role": "",
                     "timeout": "",
-                    "runtime": ""
+                    "runtime": "",
+                    "arn": "arn:aws:lambda:us-east-1:347191724861:function:GovVoteAPI-Issues-Id-GET"
                 },
                 "x-amazon-apigateway-integration": {
                     "type": "AWS",
@@ -720,8 +663,12 @@
                                 "application/json": "Empty"
                             }
                         }
-                    }
+                    },
+                    "uri": "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:347191724861:function:GovVoteAPI-Issues-Id-GET/invocations"
                 }
+            },
+            "x-amazon-apigateway-resource": {
+                "id": "qgnhac"
             }
         },
         "/issues": {
@@ -769,7 +716,8 @@
                     "memorySize": "",
                     "role": "",
                     "timeout": "",
-                    "runtime": ""
+                    "runtime": "",
+                    "arn": "arn:aws:lambda:us-east-1:347191724861:function:GovVoteAPI-Issues-POST"
                 },
                 "x-amazon-apigateway-integration": {
                     "type": "AWS",
@@ -806,7 +754,8 @@
                                 "application/json": "Empty"
                             }
                         }
-                    }
+                    },
+                    "uri": "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:347191724861:function:GovVoteAPI-Issues-POST/invocations"
                 }
             },
             "get": {
@@ -821,7 +770,8 @@
                     "memorySize": "",
                     "role": "",
                     "timeout": "",
-                    "runtime": ""
+                    "runtime": "",
+                    "arn": "arn:aws:lambda:us-east-1:347191724861:function:GovVoteAPI-Issues-GET"
                 },
                 "x-amazon-apigateway-integration": {
                     "type": "AWS",
@@ -858,9 +808,21 @@
                                 "application/json": "Empty"
                             }
                         }
-                    }
+                    },
+                    "uri": "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:347191724861:function:GovVoteAPI-Issues-GET/invocations"
                 }
+            },
+            "x-amazon-apigateway-resource": {
+                "id": "3cjlhi"
+            }
+        },
+        "/": {
+            "x-amazon-apigateway-resource": {
+                "id": "bqk8douhq9"
             }
         }
+    },
+    "x-amazon-apigateway-restapi": {
+        "id": "d60u7metbl"
     }
 }

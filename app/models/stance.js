@@ -2,7 +2,6 @@ import DS from 'ember-data';
 
 var Stance = DS.Model.extend({
     title: DS.attr('string'),
-    permalink: DS.attr('string'),
 
     overview: DS.attr('string'),
     audio: DS.attr('string', { defaultValue: '' }),

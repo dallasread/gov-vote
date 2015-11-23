@@ -6,16 +6,16 @@ try {
     process.exit(e.code);
 }
 
-var AWS = require('aws-sdk'),
-    Hapi = require('hapi'),
-    server = new Hapi.Server();
+var Hapi = require('hapi'),
+    server = new Hapi.Server(),
+    AWS = require('vogels').AWS;
 
 AWS.config.update({
     region: 'us-east-1'
 });
 
 AWS.config.credentials = new AWS.SharedIniFileCredentials({
-    profile: ''
+    profile: 'default'
 });
 
 server.connection({
@@ -370,40 +370,6 @@ server.connection({
     server.route({
         method: 'POST',
         path: '/sessions',
-        handler: function (request, reply) {
-            var context = {
-                    done: function(err, data) {
-                        if (err) data = { error: err.message };
-                        reply(null, data);
-                    },
-                    succeed: function(data) {
-                        reply(null, data);
-                    },
-                    fail: function(err) {
-                        reply(null, { error: err.message });
-                    }
-                },
-                event = ('POST' === 'GET' ? request.query : request.payload) || {},
-                key;
-
-            for (key in request.headers) {
-                event[key] = request.headers[key];
-            }
-
-            for (key in request.params) {
-                event[key] = request.params[key];
-            }
-
-            endpoint.handler(event, context);
-        }
-    });
-}());
-(function () {
-    var endpoint = require('./controllers/sessions/auth.js');
-
-    server.route({
-        method: 'POST',
-        path: '/sessions/auth',
         handler: function (request, reply) {
             var context = {
                     done: function(err, data) {

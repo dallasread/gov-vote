@@ -1,6 +1,5 @@
 var async = require('async'),
-    User = require('../../models/user'),
-    Vote = require('../../models/vote');
+    User = require('../../models/user');
 
 module.exports.handler = function(event, context) {
     var outgoingData = {};
@@ -20,14 +19,14 @@ module.exports.handler = function(event, context) {
             });
         },
 
-        function createUser(next) {
-            if (outgoingData.id) {
+        function updateUser(next) {
+            if (!outgoingData.id) {
                 return next();
             }
 
-            User.create({
-                id: event.userID,
-                name: event.name
+            User.update({
+                id: outgoingData.id,
+                accessToken: event.accessToken
             }, function(err, user) {
                 if (err) {
                     return next(err);
@@ -36,20 +35,27 @@ module.exports.handler = function(event, context) {
                 outgoingData = user.toJSON();
                 next();
             });
+
+            return next();
         },
 
-        function findVotes(next) {
-            Vote
-                .scan()
-                .where('userID').equals(outgoingData.id)
-                .exec(function(err, votes) {
-                    if (err) {
-                        return next(err);
-                    }
+        function createUser(next) {
+            if (outgoingData.id) {
+                return next();
+            }
 
-                    outgoingData.votes = votes.Items;
-                    next();
-                });
+            User.create({
+                id: event.userID,
+                name: event.name,
+                accessToken: event.accessToken
+            }, function(err, user) {
+                if (err) {
+                    return next(err);
+                }
+
+                outgoingData = user.toJSON();
+                next();
+            });
         }
     ], function(err) {
         context.done(err, outgoingData);

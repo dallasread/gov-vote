@@ -1,5 +1,6 @@
 # Gov-vote
 
 # TODO
-- Hook up API
+- RestAPI
+- Send Auth/Admin along
 - Populate 5 issues

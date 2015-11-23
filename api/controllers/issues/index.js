@@ -1,15 +1,26 @@
 var async = require('async'),
-    Issue = require('../../models/issue');
+    Issue = require('../../models/issue'),
+    findUser = require('../../utils/find-user');
 
 module.exports.handler = function(event, context) {
     var outgoingData = {},
-        admin = true;
+        user = {};
 
     async.series([
+        function auth(next) {
+            findUser(event, outgoingData, function(err, u) {
+                if (u) {
+                    user = u;
+                }
+
+                next();
+            });
+        },
+
         function create(next) {
             var query = Issue.scan();
 
-            if (!admin) {
+            if (!user.admin) {
                 query = query.where('active').equals(true);
             }
 

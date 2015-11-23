@@ -16,7 +16,9 @@
             {{/if}}
 
             {{#if isEditing}}
-                {{input type="text" value=stance.permalink placeholder="Permalink"}}
+                {{#unless stance.id}}
+                    {{input type="text" value=stance.id placeholder="Permalink"}}
+                {{/unless}}
             {{/if}}
 
             <a {{action 'changeStance' 1 on='click'}} class="stance-heading">

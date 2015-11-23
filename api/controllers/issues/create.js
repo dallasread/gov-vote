@@ -1,13 +1,23 @@
 var async = require('async'),
-    Issue = require('../../models/issue');
+    Issue = require('../../models/issue'),
+    findUser = require('../../utils/find-user');
 
 module.exports.handler = function(event, context) {
     var outgoingData = {},
-        admin = true;
+        user = {};
 
     async.series([
+        function auth(next) {
+            findUser(event, outgoingData, function(err, u) {
+                if (u) {
+                    user = u;
+                }
+
+                next();
+            });
+        },
         function update(next) {
-            if (!admin) {
+            if (!user.admin) {
                 return next();
             }
 

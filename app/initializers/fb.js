@@ -2,11 +2,23 @@ import FB from 'ember-cli-facebook-js-sdk/fb';
 
 export default {
     name: 'fb',
-    initialize() {
-        return FB.init({
+    initialize(container, app) {
+        FB.init({
             appId: '518529864982040',
             version: 'v2.5',
             xfbml: false
         });
+
+        FB.getLoginStatus().then(function(response) {
+            if (response.status === 'connected') {
+                container.lookup('controller:application')
+                    .send('facebookResponse', response, function() {
+                        alert(1)
+                        app.advanceReadiness();
+                    });
+            }
+        });
+
+        return app.deferReadiness();
     }
 };

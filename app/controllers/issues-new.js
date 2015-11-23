@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
     resetPermalink: function resetPermalink() {
         this.set(
-            'permalink',
+            'id',
             this.get('title')
                 .replace(/\s+/g, '-')
                 .replace(/[^A-Za-z0-9-]/g, '')
@@ -14,11 +14,11 @@ export default Ember.Controller.extend({
         suggest: function suggest() {
             var _ = this,
                 issue = _.store.createRecord('issue', {
+                    id: _.get('id'),
                     title: _.get('title'),
-                    permalink: _.get('permalink'),
                     description: _.get('description')
                 });
-                
+
             this.transitionToRoute('issue', issue.save());
         },
     }
