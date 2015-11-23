@@ -32,8 +32,8 @@ export default Ember.Controller.extend({
                         );
                     }
                 });
-                
-                _.store.findAll('vote').then(function() {
+
+                _.store.find('vote').then(function() {
                     _.set('session.user', user);
 
                     if (_.get('component-login-modal')) {

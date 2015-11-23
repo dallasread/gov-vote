@@ -8,7 +8,7 @@ var Stance = DS.Model.extend({
     video: DS.attr('string', { defaultValue: '' }),
     documents: DS.attr('string', { defaultValue: '' }),
 
-    issue: DS.belongsTo('issue', { async: true }),
+    issue: DS.belongsTo('issue', { async: false }),
 
     isSuggesting: function() {
         return this.get('id') === 'suggest';
