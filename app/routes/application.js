@@ -7,7 +7,7 @@ var Application = Ember.Route.extend(ApplicationRouteMixin).extend({
     },
     setupController: function setupController(controller, model) {
         var _ = this;
-
+        
         controller.set('model', model);
 
         _.store.findAll('stance').then(function() {

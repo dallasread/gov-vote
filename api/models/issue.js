@@ -11,7 +11,8 @@ var Issue = vogels.define('Issue', {
         id:           Joi.string().required(),
         active:       Joi.boolean().default(false).required(),
         title:        Joi.string().required(),
-        description:  Joi.string().required()
+        description:  Joi.string().required(),
+        domain:       Joi.string().required().default('ca')
     }).options({ stripUnknown : true })
 });
 

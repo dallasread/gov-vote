@@ -18,13 +18,13 @@ module.exports.handler = function(event, context) {
         },
 
         function update(next) {
-            if (!user.admin || !event.issue) {
+            if (!user.admin || !event.payload.issue) {
                 return next();
             }
 
-            event.issue.id = event.id;
+            event.payload.issue.id = event.params.id;
 
-            Issue.update(event.issue, function(err, issue) {
+            Issue.update(event.payload.issue, function(err, issue) {
                 if (err) {
                     return next(err);
                 }

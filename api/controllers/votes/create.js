@@ -8,21 +8,23 @@ module.exports.handler = function(event, context) {
     async.series([
         function auth(next) {
             findUser(event, outgoingData, function(err, u) {
-                if (!u) {
-                    return next(new Error('User not logged in.'));
+                if (err) {
+                    return next(err);
                 }
 
-                event.vote.user = u.get('id');
+                event.payload.vote = event.payload.vote || {};
+                event.payload.vote.user = u.get('id');
+
                 next();
             });
         },
 
         function update(next) {
-            if (!event.vote.user) {
+            if (!event.payload.vote.user) {
                 return next();
             }
 
-            Vote.create(event.vote, function(err, vote) {
+            Vote.create(event.payload.vote, function(err, vote) {
                 if (err) {
                     return next(err);
                 }

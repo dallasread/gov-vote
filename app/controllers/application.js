@@ -24,11 +24,13 @@ export default Ember.Controller.extend({
             var _ = this;
 
             GovVoteAPI.sessionsCreate(response.authResponse, function(err, user) {
-                Ember.$.ajaxPrefilter(function(options, oriOpt, jqXHR) {
-                    jqXHR.setRequestHeader(
-                        'Authorization',
-                        user.id + ':' + user.accessToken
-                    );
+                Ember.$.ajaxSetup({
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader(
+                            'Authorization',
+                            user.id + ':' + user.accessToken
+                        );
+                    }
                 });
 
                 _.set('session.user', user);

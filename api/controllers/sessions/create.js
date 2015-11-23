@@ -7,7 +7,7 @@ module.exports.handler = function(event, context) {
 
     async.series([
         function findUser(next) {
-            User.get(event.userID, function(err, user) {
+            User.get(event.payload.userID, function(err, user) {
                 if (err) {
                     return next(err);
                 }
@@ -27,7 +27,7 @@ module.exports.handler = function(event, context) {
 
             User.update({
                 id: outgoingData.id,
-                accessToken: event.accessToken
+                accessToken: event.payload.accessToken
             }, function(err, user) {
                 if (err) {
                     return next(err);
@@ -39,14 +39,14 @@ module.exports.handler = function(event, context) {
         },
 
         function createUser(next) {
-            if (outgoingData.id || !event.userID) {
+            if (outgoingData.id || !event.payload.userID) {
                 return next();
             }
 
             User.create({
-                id: event.userID,
-                name: event.name,
-                accessToken: event.accessToken
+                id: event.payload.userID,
+                name: event.payload.name,
+                accessToken: event.payload.accessToken
             }, function(err, user) {
                 if (err) {
                     return next(err);

@@ -21,7 +21,7 @@ module.exports.handler = function(event, context) {
             //     return next();
             // }
 
-            Issue.create(event.issue, function(err, issue) {
+            Issue.create(event.payload.issue, function(err, issue) {
                 if (err) {
                     return next(err);
                 }

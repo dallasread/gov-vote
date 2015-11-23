@@ -28,6 +28,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.host = 'http://localhost:8000';
   }
 
   if (environment === 'test') {
@@ -43,7 +44,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+      ENV.host = 'https://d60u7metbl.execute-api.us-east-1.amazonaws.com';
+      ENV.namespace = 'dev';
   }
 
   return ENV;

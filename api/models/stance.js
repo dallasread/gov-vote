@@ -8,7 +8,7 @@ var Stance = vogels.define('Stance', {
     timestamps: true,
 
     schema: Joi.object().keys({
-        id:         Joi.string().required(),
+        id:         vogels.types.uuid(),
 
         title:      Joi.string().required(),
         active:     Joi.boolean().default(false).required(),

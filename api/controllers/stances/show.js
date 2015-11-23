@@ -18,7 +18,7 @@ module.exports.handler = function(event, context) {
         },
 
         function show(next) {
-            Stance.get(event.id, function(err, stance) {
+            Stance.get(event.params.id, function(err, stance) {
                 if (err) {
                     return next(err);
                 }

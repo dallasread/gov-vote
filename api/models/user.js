@@ -11,8 +11,6 @@ var User = vogels.define('User', {
         id:        Joi.string(),
         accessToken: Joi.string(),
 
-        apiKey:    vogels.types.uuid(),
-        apiSecret: vogels.types.uuid(),
         email:     Joi.string().lowercase(),
         name:      Joi.string(),
 

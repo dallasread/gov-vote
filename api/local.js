@@ -43,16 +43,14 @@ server.connection({
                         reply(null, { error: err.message });
                     }
                 },
-                event = ('POST' === 'GET' ? request.query : request.payload) || {},
-                key;
+                event = {
+                    headers: request.headers,
+                    payload: request.payload,
+                    params: request.params,
+                    query: request.query
+                };
 
-            for (key in request.headers) {
-                event[key] = request.headers[key];
-            }
-
-            for (key in request.params) {
-                event[key] = request.params[key];
-            }
+            event.headers.Authorization = event.headers.authorization;
 
             endpoint.handler(event, context);
         }
@@ -77,16 +75,14 @@ server.connection({
                         reply(null, { error: err.message });
                     }
                 },
-                event = ('GET' === 'GET' ? request.query : request.payload) || {},
-                key;
+                event = {
+                    headers: request.headers,
+                    payload: request.payload,
+                    params: request.params,
+                    query: request.query
+                };
 
-            for (key in request.headers) {
-                event[key] = request.headers[key];
-            }
-
-            for (key in request.params) {
-                event[key] = request.params[key];
-            }
+            event.headers.Authorization = event.headers.authorization;
 
             endpoint.handler(event, context);
         }
@@ -111,16 +107,14 @@ server.connection({
                         reply(null, { error: err.message });
                     }
                 },
-                event = ('PUT' === 'GET' ? request.query : request.payload) || {},
-                key;
+                event = {
+                    headers: request.headers,
+                    payload: request.payload,
+                    params: request.params,
+                    query: request.query
+                };
 
-            for (key in request.headers) {
-                event[key] = request.headers[key];
-            }
-
-            for (key in request.params) {
-                event[key] = request.params[key];
-            }
+            event.headers.Authorization = event.headers.authorization;
 
             endpoint.handler(event, context);
         }
@@ -145,16 +139,14 @@ server.connection({
                         reply(null, { error: err.message });
                     }
                 },
-                event = ('GET' === 'GET' ? request.query : request.payload) || {},
-                key;
+                event = {
+                    headers: request.headers,
+                    payload: request.payload,
+                    params: request.params,
+                    query: request.query
+                };
 
-            for (key in request.headers) {
-                event[key] = request.headers[key];
-            }
-
-            for (key in request.params) {
-                event[key] = request.params[key];
-            }
+            event.headers.Authorization = event.headers.authorization;
 
             endpoint.handler(event, context);
         }
@@ -179,16 +171,14 @@ server.connection({
                         reply(null, { error: err.message });
                     }
                 },
-                event = ('POST' === 'GET' ? request.query : request.payload) || {},
-                key;
+                event = {
+                    headers: request.headers,
+                    payload: request.payload,
+                    params: request.params,
+                    query: request.query
+                };
 
-            for (key in request.headers) {
-                event[key] = request.headers[key];
-            }
-
-            for (key in request.params) {
-                event[key] = request.params[key];
-            }
+            event.headers.Authorization = event.headers.authorization;
 
             endpoint.handler(event, context);
         }
@@ -213,16 +203,14 @@ server.connection({
                         reply(null, { error: err.message });
                     }
                 },
-                event = ('GET' === 'GET' ? request.query : request.payload) || {},
-                key;
+                event = {
+                    headers: request.headers,
+                    payload: request.payload,
+                    params: request.params,
+                    query: request.query
+                };
 
-            for (key in request.headers) {
-                event[key] = request.headers[key];
-            }
-
-            for (key in request.params) {
-                event[key] = request.params[key];
-            }
+            event.headers.Authorization = event.headers.authorization;
 
             endpoint.handler(event, context);
         }
@@ -247,16 +235,14 @@ server.connection({
                         reply(null, { error: err.message });
                     }
                 },
-                event = ('PUT' === 'GET' ? request.query : request.payload) || {},
-                key;
+                event = {
+                    headers: request.headers,
+                    payload: request.payload,
+                    params: request.params,
+                    query: request.query
+                };
 
-            for (key in request.headers) {
-                event[key] = request.headers[key];
-            }
-
-            for (key in request.params) {
-                event[key] = request.params[key];
-            }
+            event.headers.Authorization = event.headers.authorization;
 
             endpoint.handler(event, context);
         }
@@ -281,16 +267,14 @@ server.connection({
                         reply(null, { error: err.message });
                     }
                 },
-                event = ('GET' === 'GET' ? request.query : request.payload) || {},
-                key;
+                event = {
+                    headers: request.headers,
+                    payload: request.payload,
+                    params: request.params,
+                    query: request.query
+                };
 
-            for (key in request.headers) {
-                event[key] = request.headers[key];
-            }
-
-            for (key in request.params) {
-                event[key] = request.params[key];
-            }
+            event.headers.Authorization = event.headers.authorization;
 
             endpoint.handler(event, context);
         }
@@ -315,16 +299,14 @@ server.connection({
                         reply(null, { error: err.message });
                     }
                 },
-                event = ('POST' === 'GET' ? request.query : request.payload) || {},
-                key;
+                event = {
+                    headers: request.headers,
+                    payload: request.payload,
+                    params: request.params,
+                    query: request.query
+                };
 
-            for (key in request.headers) {
-                event[key] = request.headers[key];
-            }
-
-            for (key in request.params) {
-                event[key] = request.params[key];
-            }
+            event.headers.Authorization = event.headers.authorization;
 
             endpoint.handler(event, context);
         }
@@ -349,16 +331,14 @@ server.connection({
                         reply(null, { error: err.message });
                     }
                 },
-                event = ('GET' === 'GET' ? request.query : request.payload) || {},
-                key;
+                event = {
+                    headers: request.headers,
+                    payload: request.payload,
+                    params: request.params,
+                    query: request.query
+                };
 
-            for (key in request.headers) {
-                event[key] = request.headers[key];
-            }
-
-            for (key in request.params) {
-                event[key] = request.params[key];
-            }
+            event.headers.Authorization = event.headers.authorization;
 
             endpoint.handler(event, context);
         }
@@ -383,16 +363,14 @@ server.connection({
                         reply(null, { error: err.message });
                     }
                 },
-                event = ('POST' === 'GET' ? request.query : request.payload) || {},
-                key;
+                event = {
+                    headers: request.headers,
+                    payload: request.payload,
+                    params: request.params,
+                    query: request.query
+                };
 
-            for (key in request.headers) {
-                event[key] = request.headers[key];
-            }
-
-            for (key in request.params) {
-                event[key] = request.params[key];
-            }
+            event.headers.Authorization = event.headers.authorization;
 
             endpoint.handler(event, context);
         }

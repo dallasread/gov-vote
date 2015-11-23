@@ -18,7 +18,7 @@ module.exports.handler = function(event, context) {
         },
 
         function show(next) {
-            Issue.get(event.id, function(err, issue) {
+            Issue.get(event.params.id, function(err, issue) {
                 if (err) {
                     return next(err);
                 }

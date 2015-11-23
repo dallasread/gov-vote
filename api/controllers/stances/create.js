@@ -22,7 +22,9 @@ module.exports.handler = function(event, context) {
             //     return next();
             // }
 
-            Stance.create(event.stance, function(err, stance) {
+            delete event.payload.stance.id;
+
+            Stance.create(event.payload.stance, function(err, stance) {
                 if (err) {
                     return next(err);
                 }

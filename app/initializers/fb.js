@@ -15,6 +15,8 @@ export default {
                     .send('facebookResponse', response, function() {
                         app.advanceReadiness();
                     });
+            } else {
+                app.advanceReadiness();
             }
         });
 

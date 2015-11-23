@@ -2,22 +2,24 @@ var User = require('../models/user'),
     config = require('../config');
 
 module.exports = function findUser(event, outgoingData, done) {
-    var auth = event.Authorization || event.authorization;
+    var noUser = new Error('User not logged in.'),
+        auth = event.headers && event.headers.Authorization;
 
     if (!auth || !auth.length) {
-        return done();
+        return done(noUser);
     }
 
     auth = auth.split(':');
 
-    User.get({
-        id: auth[0],
-        accessToken: auth[1]
-    }, function(err, user) {
-        if (user && user.get('id') === config.admin) {
+    User.get(auth[0], function(err, user) {
+        if (err || !user || user.get('accessToken') !== auth[1]) {
+            return done(err || noUser);
+        }
+
+        if (user.get('id') === config.admin) {
             user.admin = true;
         }
 
-        done(err, user);
+        done(null, user);
     });
 };

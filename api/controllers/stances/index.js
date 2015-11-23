@@ -18,12 +18,7 @@ module.exports.handler = function(event, context) {
         },
 
         function index(next) {
-            var query = Stance
-                .scan();
-
-            if (event.issue) {
-                query = query.where('issue').equals(event.issue);
-            }
+            var query = Stance.scan();
 
             if (!user.admin) {
                 query = query.where('active').equals(true);

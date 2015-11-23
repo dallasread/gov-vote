@@ -11,8 +11,7 @@ export default Ember.Controller.extend({
             var _ = this,
                 data = {
                     issue: this.get('checkedStance.issue'),
-                    stance: this.get('checkedStance'),
-                    user: this.get('session.user.id')
+                    stance: this.get('checkedStance')
                 };
 
             _.store.filter('vote', function(item) {
