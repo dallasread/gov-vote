@@ -14,7 +14,7 @@
         {{/link-to}}
     </div>
 
-    {{#each model as |issue|}}
+    {{#each model.issues as |issue|}}
         {{#link-to 'issue' issue class="item"}}
             {{issue.title}}
         {{/link-to}}

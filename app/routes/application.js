@@ -3,7 +3,10 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 
 var Application = Ember.Route.extend(ApplicationRouteMixin).extend({
     model: function() {
-        return this.store.findAll('issue');
+        return Ember.RSVP.hash({
+            issues: this.store.findAll('issue'),
+            stances: this.store.findAll('stance')
+        });
     }
 });
 
